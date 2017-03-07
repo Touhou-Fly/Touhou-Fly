@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControl : MonoBehaviour {
+public class EnemyControl : ObjectHealthControl {
 
 	const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f;
 
-	Vector3 bulletPosition;
-	GameObject eachBulletObject;
+	GameObject enemyObject;
+	Vector3 enemyPosition;
 
 	// Use this for initialization
 	void Start () {
-		bulletPosition = new Vector3 ();
-		eachBulletObject = gameObject;
+		enemyObject = gameObject;
+		enemyPosition = new Vector3 ();
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
-		bulletPosition = eachBulletObject.transform.position;
+		enemyPosition = enemyObject.transform.position;
 
-		AutoDestroy (bulletPosition, eachBulletObject);
+		AutoDestroy (enemyPosition, enemyObject);
 
-		eachBulletObject.transform.Translate(Vector3.forward * Time.deltaTime);
-		eachBulletObject.transform.Translate(Vector3.up * Time.deltaTime, Space.World);
+		enemyObject.transform.Translate(Vector3.forward * Time.deltaTime);
+		enemyObject.transform.Translate(Vector3.down * Time.deltaTime, Space.World);
 	}
 
 	void AutoDestroy(Vector3 myPosition, GameObject myObject) {
