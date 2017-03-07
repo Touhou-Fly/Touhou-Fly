@@ -7,7 +7,7 @@ public class ObjectHealthControl : DefineManager {
 	float hitDamageScale, maxHealth, nowHealth;
 	int revolutionStage;
 
-	GameObject objectWhichIsHasHealth;
+	GameObject objectWhichIsHasHealth, deadParticleEffect;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +41,7 @@ public class ObjectHealthControl : DefineManager {
 			}
 		}
 		if (revolutionStage < ZERO) {
+			Instantiate (deadParticleEffect, objectWhichIsHasHealth.transform.position, Quaternion.identity);
 			Destroy (objectWhichIsHasHealth);
 		}
 	}
@@ -60,5 +61,9 @@ public class ObjectHealthControl : DefineManager {
 
 	public void SetObjectWhichIsHasHealth(GameObject objectWhichIsHasHealth) {
 		this.objectWhichIsHasHealth = objectWhichIsHasHealth;
+	}
+
+	public void SetDeadParticleEffect(GameObject deadParticleEffect) {
+		this.deadParticleEffect = deadParticleEffect;
 	}
 }

@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3135be0c7f604389be943a85bb33fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadParticleEffect: {fileID: 100004, guid: a89abc0d2591545288f4c041059ae633, type: 2}
 --- !u!212 &212395115718923552
 SpriteRenderer:
   m_ObjectHideFlags: 1

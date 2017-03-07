@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyControl : ObjectHealthControl {
 
+	public GameObject deadParticleEffect;
+
 	const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f;
 
 	GameObject enemyObject;
@@ -14,6 +16,7 @@ public class EnemyControl : ObjectHealthControl {
 		enemyObject = gameObject;
 		enemyPosition = new Vector3 ();
 
+		SetDeadParticleEffect (deadParticleEffect);
 		SetObjectWhichIsHasHealth (gameObject);
 		SetHitDamageScale (1.0f);
 		SetMaxHealth (0.5f);
