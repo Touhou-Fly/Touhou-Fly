@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95828392229689434}
   - component: {fileID: 58745114225960430}
   - component: {fileID: 50576485921429572}
-  - component: {fileID: 114091541938001180}
+  - component: {fileID: 114057046820797344}
   m_Layer: 0
   m_Name: Nitori
   m_TagString: Boss
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1169706971652766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.004448563, y: 0.37232456, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,7 +95,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114091541938001180
+--- !u!114 &114057046820797344
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1169706971652766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28356eb116746434eb403264eaf71a53, type: 3}
+  m_Script: {fileID: 11500000, guid: 43712edb4f0f74fac96da4425f5237f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212521754673807008

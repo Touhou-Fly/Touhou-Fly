@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectHealthControl : MonoBehaviour {
+public class ObjectHealthControl : DefineManager {
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +23,7 @@ public class ObjectHealthControl : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){ 
 		if (other.gameObject.tag == "Bullet") { 
-			Debug.Log ("Triggered"); 
+			//Debug.Log ("Triggered"); 
 		} 
 	} 
 }
