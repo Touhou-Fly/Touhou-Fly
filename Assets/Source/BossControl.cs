@@ -25,7 +25,6 @@ public class BossControl : ObjectHealthControl {
 		if (movingPositionUpdateTimer >= movingPositionUpdateTimeGab) {
 			movingPosition = GetRandomMovingPosition (new Vector3 (-0.5F, 0.3F, 0), new Vector3 (1, 0.4F, 0));
 			movingPositionUpdateTimer = 0;
-			Debug.Log ("init position");
 		}
 		MakeObjectMoveToTargetPosition (movingPosition, 0.25F);
 		movingPositionUpdateTimer += Time.deltaTime;

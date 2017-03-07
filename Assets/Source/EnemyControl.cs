@@ -13,6 +13,10 @@ public class EnemyControl : ObjectHealthControl {
 	void Start () {
 		enemyObject = gameObject;
 		enemyPosition = new Vector3 ();
+
+		SetObjectWhichIsHasHealth (gameObject);
+		SetHitDamageScale (1.0f);
+		SetMaxHealth (0.5f);
 	}
 	
 	// Update is called once per frame
