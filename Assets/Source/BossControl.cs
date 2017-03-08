@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossControl : ObjectHealthControl {
 
+	public GameObject deadParticleEffect;
+
 	GameObject bossObject;
 	Animator bossSpriteAnime;
 	Vector3 movingPosition;
@@ -18,6 +20,11 @@ public class BossControl : ObjectHealthControl {
 
 		movingPositionUpdateTimeGab = 3;
 		movingPositionUpdateTimer = movingPositionUpdateTimeGab;
+
+		SetDeadParticleEffect (deadParticleEffect);
+		SetObjectWhichIsHasHealth (gameObject);
+		SetHitDamageScale (1.2f);
+		SetMaxHealth (50.0f);
 	}
 	
 	// Update is called once per frame
@@ -37,6 +44,10 @@ public class BossControl : ObjectHealthControl {
 							Random.Range (minimalMovingPosition.y, minimalMovingPosition.y + movingScale.y),
 							0);
 	}
+
+	/*void OnGUI() { 
+		DrawMyHealthTest ();
+	}*/
 
 	void MakeObjectMoveToTargetPosition(Vector3 targetPosition, float speed) {
 		float step = speed * Time.deltaTime;

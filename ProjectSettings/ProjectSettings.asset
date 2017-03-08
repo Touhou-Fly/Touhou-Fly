@@ -471,6 +471,8 @@ PlayerSettings:
   cloudServicesEnabled:
     Build: 1
     Collab: 1
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   cloudProjectId: 3d0590f4-09c7-4d80-9452-7c3bfef768ee
   projectName: TouhouFilght

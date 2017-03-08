@@ -32,6 +32,10 @@ public class EnemyControl : ObjectHealthControl {
 		enemyObject.transform.Translate(Vector3.down * Time.deltaTime, Space.World);
 	}
 
+	/*void OnGUI() { 
+		DrawMyHealthTest ();
+	}*/
+
 	void AutoDestroy(Vector3 myPosition, GameObject myObject) {
 		if (END_OF_TOP_SCREEN < myPosition.y || myPosition.y < END_OF_BOTTOM_SCREEN) {
 			Destroy (myObject);
