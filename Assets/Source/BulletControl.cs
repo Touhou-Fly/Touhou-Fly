@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControl : MonoBehaviour {
-
-	const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f;
+public class BulletControl : DefineManager {
 
 	Vector3 bulletPosition;
 	GameObject eachBulletObject;
+	float bulletSpeed = 4.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,8 +20,8 @@ public class BulletControl : MonoBehaviour {
 
 		AutoDestroy (bulletPosition, eachBulletObject);
 
-		eachBulletObject.transform.Translate(Vector3.forward * Time.deltaTime);
-		eachBulletObject.transform.Translate(Vector3.up * Time.deltaTime, Space.World);
+		//eachBulletObject.transform.Translate(Vector3.forward * Time.deltaTime);
+		eachBulletObject.transform.Translate(Vector3.up * Time.deltaTime * bulletSpeed, Space.World);
 	}
 
 	void AutoDestroy(Vector3 myPosition, GameObject myObject) {

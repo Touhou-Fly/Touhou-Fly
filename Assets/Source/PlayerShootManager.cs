@@ -12,7 +12,7 @@ public class PlayerShootManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerObject = gameObject;
-		bulletShootGabTime = 0.125f;
+		bulletShootGabTime = 0.0625f;
 		bulletShootLastTime = 0;
 	}
 	

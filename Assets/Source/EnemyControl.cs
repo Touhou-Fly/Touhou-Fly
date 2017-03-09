@@ -18,8 +18,8 @@ public class EnemyControl : ObjectHealthControl {
 
 		SetDeadParticleEffect (deadParticleEffect);
 		SetObjectWhichIsHasHealth (gameObject);
-		SetHitDamageScale (1.0f);
-		SetMaxHealth (0.5f);
+		SetHitDamageScale (0.25f);
+		SetMaxHealth (1.5f);
 	}
 	
 	// Update is called once per frame
@@ -37,7 +37,7 @@ public class EnemyControl : ObjectHealthControl {
 	}*/
 
 	void AutoDestroy(Vector3 myPosition, GameObject myObject) {
-		if (END_OF_TOP_SCREEN < myPosition.y || myPosition.y < END_OF_BOTTOM_SCREEN) {
+		if (myPosition.y < END_OF_BOTTOM_SCREEN) {
 			Destroy (myObject);
 		}
 	}
