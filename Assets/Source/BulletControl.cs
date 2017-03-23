@@ -24,9 +24,22 @@ public class BulletControl : DefineManager {
 		eachBulletObject.transform.Translate(Vector3.up * Time.deltaTime * bulletSpeed, Space.World);
 	}
 
-	void AutoDestroy(Vector3 myPosition, GameObject myObject) {
+	public void AutoDestroy(Vector3 myPosition, GameObject myObject) {
 		if (END_OF_TOP_SCREEN < myPosition.y || myPosition.y < END_OF_BOTTOM_SCREEN) {
 			Destroy (myObject);
 		}
+	}
+
+	public void MakeObjectMoveToTargetPosition(Vector3 targetPosition) {
+		float step = bulletSpeed * Time.deltaTime;
+		eachBulletObject.transform.position = Vector3.MoveTowards (eachBulletObject.transform.position, targetPosition, step);
+	}
+
+	public void SetBulletSpeed(float bulletSpeed) {
+		this.bulletSpeed = bulletSpeed;
+	}
+
+	public void SetBulletObject(GameObject eachBulletObject) {
+		this.eachBulletObject = eachBulletObject;
 	}
 }

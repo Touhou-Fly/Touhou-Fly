@@ -11,7 +11,9 @@ public class DefineManager : MonoBehaviour {
 
 				CREATE_ENEMY_NUM = 5;
 
-	public const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f;
+	public const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f, END_OF_BOTTOM_SCREEN_WIDTH_GAP = -1.5f, END_OF_TOP_SCREEN_TOP_GAP = 3f;
+
+	public static float SHAKE_CAMERA_RANGE = 0.0f;
 
 	// Use this for initialization
 	void Start () {

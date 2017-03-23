@@ -7,7 +7,7 @@ public class ObjectHealthControl : DefineManager {
 	float hitDamageScale, maxHealth, nowHealth;
 	int revolutionStage;
 
-	GameObject objectWhichIsHasHealth, deadEffect, healthBarObject;
+	GameObject objectWhichIsHasHealth, deadEffect, healthBarObject, itemPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -42,8 +42,13 @@ public class ObjectHealthControl : DefineManager {
 			}
 		}
 		if (revolutionStage < ZERO) {
-			if(deadEffect != null)
+			if (deadEffect != null) {
+				if (itemPrefab != null) {
+					Instantiate (itemPrefab, objectWhichIsHasHealth.transform.position, Quaternion.identity);
+				}
 				Instantiate (deadEffect, objectWhichIsHasHealth.transform.position, Quaternion.identity);
+				SHAKE_CAMERA_RANGE = 0.3f;
+			}
 			Destroy (objectWhichIsHasHealth);
 		}
 	}
@@ -69,6 +74,10 @@ public class ObjectHealthControl : DefineManager {
 
 	public void SetDeadParticleEffect(GameObject deadEffect) {
 		this.deadEffect = deadEffect;
+	}
+
+	public void SetItemPrefab(GameObject itemPrefab) {
+		this.itemPrefab = itemPrefab;
 	}
 
 	public void DrawMyHealthTest() {

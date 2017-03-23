@@ -5,8 +5,9 @@ using UnityEngine;
 public class EnemyControl : ObjectHealthControl {
 
 	public GameObject deadParticleEffect;
+	public GameObject itemPrefab;
 
-	const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f;
+	//const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f;
 
 	GameObject enemyObject;
 	Vector3 enemyPosition;
@@ -19,7 +20,8 @@ public class EnemyControl : ObjectHealthControl {
 		SetDeadParticleEffect (deadParticleEffect);
 		SetObjectWhichIsHasHealth (gameObject);
 		SetHitDamageScale (0.25f);
-		SetMaxHealth (1.5f);
+		SetMaxHealth (0.75f);
+		SetItemPrefab (itemPrefab);
 	}
 	
 	// Update is called once per frame

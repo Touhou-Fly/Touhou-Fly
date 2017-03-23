@@ -34,7 +34,6 @@ public class AutoCreateEnemy : DefineManager {
 		for (i = 0; i < maxWidth; i += maxWidth / CREATE_ENEMY_NUM) {
 			Vector3 createPosition = new Vector3 (i - centerOfCreateEnemyPositionX, END_OF_TOP_SCREEN, 0);
 			Instantiate (enemyPrefab[0], createPosition, Quaternion.identity);
-			Debug.Log ("create po:" + createPosition);
 		}
 	}
 }
