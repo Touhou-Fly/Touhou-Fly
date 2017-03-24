@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 921910919}
   - component: {fileID: 921910918}
   - component: {fileID: 921910923}
+  - component: {fileID: 921910924}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -398,6 +399,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6ea071a8ab349bd89c8fed92c02688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &921910924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 921910917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0201bc242196e4df88f886e546cb7957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theCube: {fileID: 1675250985405388, guid: f55317323bc4144d49f10994e7b9ea66, type: 2}
 --- !u!1 &1301346445
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +535,7 @@ Prefab:
     - target: {fileID: 50953418556580624, guid: 68f72e68834f34db184561098b46d655,
         type: 2}
       propertyPath: m_Simulated
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 68f72e68834f34db184561098b46d655, type: 2}
