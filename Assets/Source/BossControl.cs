@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class BossControl : ObjectHealthControl {
 
-	public GameObject deadParticleEffect;
+	public GameObject deadParticleEffect, createParticleEffect;
 
-	GameObject bossObject;
+	GameObject bossObject, bossCreateParticleEffectObject;
 	Animator bossSpriteAnime;
 	Vector3 movingPosition;
 	float movingPositionUpdateTimer, movingPositionUpdateTimeGab;
+	bool canBossMoving;
 
 	// Use this for initialization
 	void Start () {
@@ -23,20 +24,31 @@ public class BossControl : ObjectHealthControl {
 
 		SetDeadParticleEffect (deadParticleEffect);
 		SetObjectWhichIsHasHealth (gameObject);
-		SetHitDamageScale (1.2f);
+		SetHitDamageScale (0f);
 		SetMaxHealth (50.0f);
+		SetKillScore (1000);
+
+		bossCreateParticleEffectObject = Instantiate (createParticleEffect, new Vector3 (0, 0.4f, 0), Quaternion.identity);
+
+		canBossMoving = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (movingPositionUpdateTimer >= movingPositionUpdateTimeGab) {
-			movingPosition = GetRandomMovingPosition (new Vector3 (-0.5F, 0.3F, 0), new Vector3 (1, 0.4F, 0));
-			movingPositionUpdateTimer = 0;
+		if (bossCreateParticleEffectObject == null) {
+			canBossMoving = true;
+			SetHitDamageScale (1.2f);
 		}
-		MakeObjectMoveToTargetPosition (movingPosition, 0.25F);
-		movingPositionUpdateTimer += Time.deltaTime;
+		if (canBossMoving) {
+			if (movingPositionUpdateTimer >= movingPositionUpdateTimeGab) {
+				movingPosition = GetRandomMovingPosition (new Vector3 (-0.5F, 0.3F, 0), new Vector3 (1, 0.4F, 0));
+				movingPositionUpdateTimer = 0;
+			}
+			MakeObjectMoveToTargetPosition (movingPosition, 0.25F);
+			movingPositionUpdateTimer += Time.deltaTime;
 
-		SetAnimation(GetMovingDirection(AdvanceAbs(bossObject.transform.position, 1.0f), AdvanceAbs(movingPosition, 1.0f)));
+			SetAnimation(GetMovingDirection(AdvanceAbs(bossObject.transform.position, 1.0f), AdvanceAbs(movingPosition, 1.0f)));
+		}
 	}
 
 	Vector3 GetRandomMovingPosition(Vector3 minimalMovingPosition, Vector3 movingScale) {

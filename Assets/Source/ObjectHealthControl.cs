@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectHealthControl : DefineManager {
 
-	float hitDamageScale, maxHealth, nowHealth;
+	float hitDamageScale, maxHealth, nowHealth, killScore;
 	int revolutionStage;
 
 	GameObject objectWhichIsHasHealth, deadEffect, healthBarObject, itemPrefab;
@@ -25,7 +25,7 @@ public class ObjectHealthControl : DefineManager {
 	}*/
 
 	void OnTriggerEnter2D(Collider2D other){ 
-		if (other.gameObject.tag == "Bullet") { 
+		if (other.gameObject.tag == "MyBullet") { 
 			//Debug.Log ("Triggered " + nowHealth); 
 			nowHealth -= hitDamageScale;
 			SetHealthStatus (maxHealth, nowHealth);
@@ -49,6 +49,7 @@ public class ObjectHealthControl : DefineManager {
 				Instantiate (deadEffect, objectWhichIsHasHealth.transform.position, Quaternion.identity);
 				SHAKE_CAMERA_RANGE = 0.3f;
 			}
+			GAME_SCORE += killScore;
 			Destroy (objectWhichIsHasHealth);
 		}
 	}
@@ -78,6 +79,10 @@ public class ObjectHealthControl : DefineManager {
 
 	public void SetItemPrefab(GameObject itemPrefab) {
 		this.itemPrefab = itemPrefab;
+	}
+
+	public void SetKillScore(float killScore) {
+		this.killScore = killScore;
 	}
 
 	public void DrawMyHealthTest() {

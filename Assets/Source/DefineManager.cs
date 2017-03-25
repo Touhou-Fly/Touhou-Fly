@@ -9,11 +9,23 @@ public class DefineManager : MonoBehaviour {
 
 				ZERO = 0,
 
-				CREATE_ENEMY_NUM = 5;
+				CREATE_ENEMY_NUM = 5,
 
-	public const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f, END_OF_BOTTOM_SCREEN_WIDTH_GAP = -1.5f, END_OF_TOP_SCREEN_TOP_GAP = 3f;
+				ITEM_POWER = 0, ITEM_SCORE = 1, ITEM_BOOST = 2;
 
-	public static float SHAKE_CAMERA_RANGE = 0.0f;
+	public const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f, END_OF_BOTTOM_SCREEN_WIDTH_GAP = -1.5f, END_OF_TOP_SCREEN_TOP_GAP = 3f,
+
+				BOOST_SPEED = 5f,
+
+				ENEMY_NORMAL_CREATE_TIME_GAP = 2.5f, ENEMY_BOOST_CREATE_TIME_GAP = 0.5f, ENEMY_CREATE_WIDTH_SCALE = 1.2f,
+
+				SWAP_ACTIVE_TIME = 15,
+
+				ANIME_SPEED = 10;
+
+	public static float SHAKE_CAMERA_RANGE = 0.0f, BOOST_TIME = 0, GAME_SCORE = 0;
+
+	public static bool AM_I_STILL_AILVE = true;
 
 	// Use this for initialization
 	void Start () {

@@ -10,6 +10,7 @@ public class ItemControl : DefineManager {
 	SpriteRenderer itemSpriteRenderer;
 	Rigidbody2D itemRigidbody2D;
 	float gravityScale, animeSpeed, gravityReachScale;
+	int selectedItemVarious;
 
 	// Use this for initialization
 	void Start () {
@@ -17,9 +18,12 @@ public class ItemControl : DefineManager {
 		gravityScale = -0.2f - Random.Range(0.0f, 0.15f);
 		gravityReachScale = 0.1f + Random.Range (0.0f, 0.1f);
 		animeSpeed = 10;
+		selectedItemVarious = ConvertRandomToItemNumber (Random.Range (0.0f, 1.0f));
 
 		itemSpriteRenderer = thisItemObject.GetComponent<SpriteRenderer> ();
 		itemRigidbody2D = thisItemObject.GetComponent<Rigidbody2D> ();
+
+		ChangeSpriteImage (selectedItemVarious);
 	}
 	
 	// Update is called once per frame
@@ -31,7 +35,23 @@ public class ItemControl : DefineManager {
 
 	void OnTriggerEnter2D(Collider2D other){ 
 		if (other.gameObject.tag == "Player") { 
-			Debug.Log ("hit");
+			//Debug.Log ("hit");
+			switch (selectedItemVarious) {
+				case ITEM_POWER:
+					GAME_SCORE += 100;
+					break;
+				case ITEM_SCORE:
+					GAME_SCORE += 200;
+					break;
+				case ITEM_BOOST:
+					if (BOOST_TIME <= 0) {
+						BOOST_TIME = 5;
+						GAME_SCORE += 50;
+					}
+					break;
+				default:
+					break;
+			}
 			UpdateScore ();
 			DestroyItem ();
 		} 
@@ -57,5 +77,18 @@ public class ItemControl : DefineManager {
 
 	void DestroyItem() {
 		Destroy (thisItemObject);
+	}
+
+	int ConvertRandomToItemNumber(float randomStatus) {
+		if (0 <= randomStatus && randomStatus < 0.4f) {
+			return ITEM_POWER;
+		}
+		else if (0.4f <= randomStatus && randomStatus < 0.97f) {
+			return ITEM_SCORE;
+		}
+		else if (0.97f <= randomStatus && randomStatus < 1) {
+			return ITEM_BOOST;
+		}
+		return ITEM_POWER;
 	}
 }

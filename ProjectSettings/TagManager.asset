@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Boss
   - Item
+  - MyBullet
   layers:
   - Default
   - TransparentFX

@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class BackgroundCubeControl : DefineManager {
 	public float speed = 5f, fallingSpeed = 0.2f;
-	Vector3 rotateDirection;
+	Vector3 rotateDirection, blockScale;
 	GameObject backgroundCubeObject;
 
 	// Use this for initialization
 	void Start () {
+		float localScale = Random.Range (0.2f, 0.4f);
+
 		backgroundCubeObject = gameObject;
 		fallingSpeed = Random.Range (0.2f, 0.5f) + 0.2f;
+		blockScale = new Vector3 (localScale, localScale, localScale);
 		rotateDirection = new Vector3 (Random.Range (0.5f, 1.5f) + 0.5f, Random.Range (0.5f, 1.5f) + 0.5f, Random.Range (0.5f, 1.5f) + 0.5f);
+
+		backgroundCubeObject.transform.localScale = blockScale;
 	}
 
 	void Update ()

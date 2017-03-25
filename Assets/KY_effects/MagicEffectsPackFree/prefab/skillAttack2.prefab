@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 19800000}
   - component: {fileID: 19900000}
+  - component: {fileID: 114750812540308578}
   m_Layer: 0
   m_Name: skillAttack2
   m_TagString: Untagged
@@ -8055,3 +8056,14 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100002}
   m_IsPrefabParent: 1
+--- !u!114 &114750812540308578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9e8435fa8a64937bcb6de2f4a3bfaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
