@@ -37,7 +37,7 @@ public class BossControl : ObjectHealthControl {
 	void Update () {
 		if (bossCreateParticleEffectObject == null) {
 			canBossMoving = true;
-			SetHitDamageScale (1.2f);
+			SetHitDamageScale (1.2f + PLAYER_SHOOTING_DAMAGE);
 		}
 		if (canBossMoving) {
 			if (movingPositionUpdateTimer >= movingPositionUpdateTimeGab) {

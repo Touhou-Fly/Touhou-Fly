@@ -21,11 +21,17 @@ public class DefineManager : MonoBehaviour {
 
 				SWAP_ACTIVE_TIME = 15,
 
-				ANIME_SPEED = 10;
+				ANIME_SPEED = 10,
 
-	public static float SHAKE_CAMERA_RANGE = 0.0f, BOOST_TIME = 0, GAME_SCORE = 0;
+				MINIMMAL_GUIDED_BULLET_SPEED = 1.0f, MAXIMMAL_GUIDED_BULLET_SPEED = 2.0f,
+
+				BULLET_ACCURACY = 0.2f;
+
+	public static float SHAKE_CAMERA_RANGE = 0.0f, BOOST_TIME = 0, GAME_SCORE = 0, PLAYER_SHOOTING_DAMAGE = 0;
 
 	public static bool AM_I_STILL_AILVE = true;
+
+	public static Vector3 MY_PLAYER_POSITION = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {

@@ -30,6 +30,8 @@ public class EnemyControl : ObjectHealthControl {
 	
 	// Update is called once per frame
 	void Update () {
+
+		SetHitDamageScale (0.25f + PLAYER_SHOOTING_DAMAGE);
 		enemyPosition = enemyObject.transform.position;
 
 		AutoDestroy (enemyPosition, enemyObject);

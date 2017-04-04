@@ -10,12 +10,12 @@ public class GuidedBullet : BulletControl {
 	void Start () {
 		guidedBulletObject = gameObject;
 		bulletNowPosition = new Vector3 ();
-		bulletReachPosition = new Vector3 (Random.Range (0.0f, 2.0f) - 1.0f, END_OF_BOTTOM_SCREEN_WIDTH_GAP, ZERO);
+		bulletReachPosition = new Vector3 (MY_PLAYER_POSITION.x + Random.Range(-BULLET_ACCURACY, BULLET_ACCURACY), END_OF_BOTTOM_SCREEN_WIDTH_GAP, ZERO);
 
 		noticeBulletPositionObject = guidedBulletObject.transform.FindChild ("noticeFireBallPosition").gameObject;
 		bulletNoticePosition = noticeBulletPositionObject.transform.position;
 
-		SetBulletSpeed (1.0f);
+		SetBulletSpeed (MINIMMAL_GUIDED_BULLET_SPEED);
 		SetBulletObject (guidedBulletObject);
 
 		//guidedBulletObject.transform.LookAt (bulletReachPosition);
@@ -23,6 +23,11 @@ public class GuidedBullet : BulletControl {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (BOOST_TIME > ZERO) {
+			SetBulletSpeed (MAXIMMAL_GUIDED_BULLET_SPEED);
+		} 
+
 		bulletNowPosition = guidedBulletObject.transform.position;
 
 		MakeObjectMoveToTargetPosition (bulletReachPosition);

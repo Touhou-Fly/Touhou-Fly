@@ -39,6 +39,9 @@ public class ItemControl : DefineManager {
 			switch (selectedItemVarious) {
 				case ITEM_POWER:
 					GAME_SCORE += 100;
+					if (PLAYER_SHOOTING_DAMAGE < 1.0f) {
+						PLAYER_SHOOTING_DAMAGE += 0.1f;
+					}
 					break;
 				case ITEM_SCORE:
 					GAME_SCORE += 200;

@@ -21,7 +21,7 @@ public class GameTimeLineControl : DefineManager {
 		autoCreateGuidedBullet = autoCreateGuidedBulletObject.GetComponent<AutoCreateGuidedBullet> ();
 
 		autoCreateEnemyObject.SetActive (true);
-		autoCreateGuidedBulletObject.SetActive (false);
+		autoCreateGuidedBulletObject.SetActive (true);
 	}
 	
 	// Update is called once per frame
@@ -29,7 +29,23 @@ public class GameTimeLineControl : DefineManager {
 		gameTimer += Time.deltaTime;
 
 		PlayerBoostControl ();
-		SwapActive ();
+		//SwapActive ();
+		SwapAttack();
+	}
+
+	void SwapAttack() {
+		if (gameTimer > SWAP_ACTIVE_TIME) {
+			autoCreateEnemyObject.SetActive (false);
+			if (createGuidedBullet) {
+				createGuidedBullet = false;
+				autoCreateGuidedBullet.FireBullet (5, 0.5f);
+			}
+			if (gameTimer > SWAP_ACTIVE_TIME + 6.0f) {
+				autoCreateEnemyObject.SetActive (true);
+				gameTimer = ZERO;
+				createGuidedBullet = true;
+			}
+		}
 	}
 
 	void SwapActive() {
