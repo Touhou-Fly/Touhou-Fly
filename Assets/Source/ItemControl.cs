@@ -39,16 +39,16 @@ public class ItemControl : DefineManager {
 			switch (selectedItemVarious) {
 				case ITEM_POWER:
 					GAME_SCORE += 100;
-					if (PLAYER_SHOOTING_DAMAGE < 1.0f) {
-						PLAYER_SHOOTING_DAMAGE += 0.1f;
+					if (PLAYER_SHOOTING_DAMAGE < MAXIMMAL_PLAYER_DAMAGE_SCALE) {
+						PLAYER_SHOOTING_DAMAGE += EACH_POWER_ITEM_GIVE_POWER_SCALE;
 					}
 					break;
 				case ITEM_SCORE:
 					GAME_SCORE += 200;
 					break;
 				case ITEM_BOOST:
-					if (BOOST_TIME <= 0) {
-						BOOST_TIME = 5;
+					if (BOOST_TIME <= ZERO) {
+						BOOST_TIME = MAXIMMAL_PLAYER_BOOST_TIME;
 						GAME_SCORE += 50;
 					}
 					break;

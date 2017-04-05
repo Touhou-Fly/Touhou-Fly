@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerManager : DefineManager {
 
-	public GameObject deadEffectPrefab;
+	public GameObject deadEffectPrefab, boostEffectParticleSystem;
 
 	GameObject playerObject;
 	// Use this for initialization
 	void Start () {
 		playerObject = gameObject;
+		boostEffectParticleSystem.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -31,6 +32,10 @@ public class PlayerManager : DefineManager {
 				Debug.Log ("hit");
 				DestroyProcess ();
 			}
+			boostEffectParticleSystem.SetActive (false);
+		} 
+		else {
+			boostEffectParticleSystem.SetActive (true);
 		}
 	}
 
