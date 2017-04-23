@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class GameTimeLineControl : DefineManager {
 
-	public GameObject autoCreateEnemyPrefab, autoCreateGuidedBulletPrefab;
+	public GameObject autoCreateEnemyPrefab, autoCreateGuidedBulletPrefab, bossPrefab;
 
-	GameObject autoCreateEnemyObject, autoCreateGuidedBulletObject;
+	GameObject autoCreateEnemyObject, autoCreateGuidedBulletObject, bossObject;
 	AutoCreateGuidedBullet autoCreateGuidedBullet;
-	float gameTimer;
-	bool createGuidedBullet;
+	float gameTimer, shootingTimeGab;
+	bool createGuidedBullet, isBossCreated, isStageUpgraded;
+	int subStageCounter = 0, howManyShootGuidedBulletThisTime;
 
 	// Use this for initialization
 	void Start () {
 		gameTimer = ZERO;
 		createGuidedBullet = true;
+		subStageCounter = 0;
+		isBossCreated = false;
+		isStageUpgraded = false;
 
 		autoCreateEnemyObject = Instantiate (autoCreateEnemyPrefab, Vector3.zero, Quaternion.identity);
 		autoCreateGuidedBulletObject = Instantiate (autoCreateGuidedBulletPrefab, Vector3.zero, Quaternion.identity);
+
 		autoCreateGuidedBullet = autoCreateGuidedBulletObject.GetComponent<AutoCreateGuidedBullet> ();
 
 		autoCreateEnemyObject.SetActive (true);
@@ -31,6 +36,17 @@ public class GameTimeLineControl : DefineManager {
 		PlayerBoostControl ();
 		//SwapActive ();
 		SwapAttack();
+
+		if (isBossCreated) {
+			if (bossObject == null) {
+				if (!isStageUpgraded) {
+					isStageUpgraded = false;
+					NOW_STAGE += 1;
+					isBossCreated = false;
+					GameEventManager.AddNewEvent (EVENT_CHALLENGE_NEXT_STAGE);
+				}
+			}
+		}
 	}
 
 	void SwapAttack() {
@@ -38,13 +54,23 @@ public class GameTimeLineControl : DefineManager {
 			autoCreateEnemyObject.SetActive (false);
 			if (createGuidedBullet) {
 				createGuidedBullet = false;
-				autoCreateGuidedBullet.FireBullet (5, 0.5f);
+				shootingTimeGab = Random.Range (0.4f, 0.8f);
+				howManyShootGuidedBulletThisTime = Random.Range (5, 10);
+				autoCreateGuidedBullet.FireBullet (howManyShootGuidedBulletThisTime, shootingTimeGab);
 			}
-			if (gameTimer > SWAP_ACTIVE_TIME + 6.0f) {
+			if (gameTimer > SWAP_ACTIVE_TIME + howManyShootGuidedBulletThisTime * shootingTimeGab + 1.0f) {
 				autoCreateEnemyObject.SetActive (true);
 				gameTimer = ZERO;
 				createGuidedBullet = true;
+				if (bossObject == null) {
+					subStageCounter += 1;
+				}
 			}
+		}
+		if (subStageCounter % BOSS_CREATE_STAGE_BUFFER == ZERO && subStageCounter != ZERO) {
+			subStageCounter = ZERO;
+			bossObject = Instantiate (bossPrefab, BOSS_CREATE_POSITION, Quaternion.identity);
+			isBossCreated = true;
 		}
 	}
 

@@ -24,6 +24,16 @@ public class BulletControl : DefineManager {
 		eachBulletObject.transform.Translate(Vector3.up * Time.deltaTime * bulletSpeed, Space.World);
 	}
 
+	void OnTriggerEnter2D(Collider2D other){
+
+		if (other.gameObject.tag == "Enemy") { 
+			Destroy (eachBulletObject);
+		} 
+		if (other.gameObject.tag == "Boss") {
+			Destroy (eachBulletObject);
+		}
+	}
+
 	public void AutoDestroy(Vector3 myPosition, GameObject myObject) {
 		if (END_OF_TOP_SCREEN < myPosition.y || myPosition.y < END_OF_BOTTOM_SCREEN) {
 			Destroy (myObject);

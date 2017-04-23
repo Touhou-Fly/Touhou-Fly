@@ -61,7 +61,7 @@ public class AutoCreateGuidedBullet : DefineManager {
 		float maxWidth = 1.7f, centerOfBulletPositionX = maxWidth / createBulletNum * ((int)createBulletNum / 2);
 		if (i >= maxWidth)
 			return -1;
-		Vector3 createPosition = new Vector3 (i - centerOfBulletPositionX, END_OF_TOP_SCREEN_TOP_GAP, 0);
+		Vector3 createPosition = new Vector3 (i - centerOfBulletPositionX, END_OF_TOP_SCREEN_TOP_GAP, ZERO);
 		Instantiate (bulletPrefab[0], createPosition, Quaternion.identity);
 		i += maxWidth / createBulletNum;
 		return i;

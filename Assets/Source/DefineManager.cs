@@ -11,7 +11,16 @@ public class DefineManager : MonoBehaviour {
 
 				CREATE_ENEMY_NUM = 5,
 
-				ITEM_POWER = 0, ITEM_SCORE = 1, ITEM_BOOST = 2;
+				ITEM_POWER = 0, ITEM_SCORE = 1, ITEM_BOOST = 2, 
+
+				BOSS_CREATE_STAGE_BUFFER = 3,
+
+				MAXIMUM_EVENT_SAVE_MEMORY_SIZE = 7,
+
+				NOT_AVAILABLE = -1,
+
+				EVENT_BONUS_FAILED = 0, EVENT_CHALLENGE_NEXT_STAGE = 1
+		;
 
 	public const float END_OF_TOP_SCREEN = 1.0f, END_OF_BOTTOM_SCREEN = -1.0f, END_OF_BOTTOM_SCREEN_WIDTH_GAP = -1.5f, END_OF_TOP_SCREEN_TOP_GAP = 3f,
 
@@ -23,7 +32,7 @@ public class DefineManager : MonoBehaviour {
 
 				ANIME_SPEED = 10,
 
-				MINIMMAL_GUIDED_BULLET_SPEED = 1.0f, MAXIMMAL_GUIDED_BULLET_SPEED = 2.0f,
+				MINIMMAL_GUIDED_BULLET_SPEED = 1.5f, MAXIMMAL_GUIDED_BULLET_SPEED = 2.5f,
 
 				BULLET_ACCURACY = 0.2f,
 
@@ -31,13 +40,19 @@ public class DefineManager : MonoBehaviour {
 
 				EACH_POWER_ITEM_GIVE_POWER_SCALE = 0.1f,
 
-				MAXIMMAL_PLAYER_BOOST_TIME = 5;
+				MAXIMMAL_PLAYER_BOOST_TIME = 5,
+
+				END_OF_RIGHT_SCREEN = 1.0f, END_OF_LEFT_SCREEN = -1.0f;
 
 	public static float SHAKE_CAMERA_RANGE = 0.0f, BOOST_TIME = 0, GAME_SCORE = 0, PLAYER_SHOOTING_DAMAGE = 0;
 
 	public static bool AM_I_STILL_AILVE = true;
 
-	public static Vector3 MY_PLAYER_POSITION = Vector3.zero;
+	public static Vector3 MY_PLAYER_POSITION = Vector3.zero, BOSS_CREATE_POSITION = new Vector3(0, 0.4f, 0);
+
+	public static int NOW_STAGE = 1, EVENT_QUEUE_REAR = 0, EVENT_QUEUE_FRONT = 0;
+
+	public static int[] EVENT_QEUEUE = new int[MAXIMUM_EVENT_SAVE_MEMORY_SIZE];
 
 	// Use this for initialization
 	void Start () {
